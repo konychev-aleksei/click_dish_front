@@ -1,0 +1,40 @@
+@use '/src/shared/styles/variables.scss' as *;
+
+.textfield {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 14px;
+  color: $button-secondary;
+  font-weight: 400;
+}
+
+.input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid $button-secondary;
+  transition: border 0.1s;
+
+  &:focus {
+    border-color: $button-primary;
+    outline: none;
+  }
+}
+
+.disabled {
+  background-color: #f9f9f9;
+  color: $button-secondary;
+  cursor: not-allowed;
+}
+
+.error {
+  border-color: #e53935;
+}
+
+.errorText {
+  font-size: 13px;
+  color: #e53935;
+}

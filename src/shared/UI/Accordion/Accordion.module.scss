@@ -1,0 +1,34 @@
+@use '/styles/variables.scss' as *;
+
+.accordion {
+  border: 1px solid $button-secondary;
+  border-radius: 8px;
+  margin: 1rem 0;
+  padding: 0.5rem;
+}
+
+.summary {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem;
+  list-style: none;
+  outline: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.content {
+  padding: 0.5rem 1rem;
+  animation: fadeIn 0.1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
