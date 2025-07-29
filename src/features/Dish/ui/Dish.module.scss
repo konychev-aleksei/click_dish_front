@@ -1,0 +1,27 @@
+.dish {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  cursor: pointer;
+
+  &__imageWrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

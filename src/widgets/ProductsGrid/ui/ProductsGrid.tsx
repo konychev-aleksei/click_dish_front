@@ -1,4 +1,4 @@
-import { Category } from '@/features/Category';
+import { Dish } from '@/features/Dish';
 import styles from './Products.module.scss';
 
 const obj = {
@@ -14,13 +14,8 @@ export const ProductsGrid = () => {
     <>
       <h2>Хинкали</h2>
       <div className={styles.productsGrid}>
-        <Category {...obj} />
-        <Category {...obj} />
-        <Category {...obj} />
-        <Category {...obj} />
-        <Category {...obj} />
-        <Category {...obj} />
-        <Category {...obj} />
+        <Dish {...obj} />
+        <Dish {...obj} />
       </div>
     </>
   );

@@ -1,13 +1,15 @@
 import '@/shared/styles/global.scss';
-import { ProductsGrid } from '@/widgets/ProductsGrid/ProductsGrid';
+import { ProductsGrid } from '@/widgets/ProductsGrid/ui/ProductsGrid';
 import styles from './App.module.scss';
 
-function App() {
-  return (
-    <div className={styles.pageWrapper}>
-      <ProductsGrid />
-    </div>
-  );
-}
+import { GlobalModalProvider } from '@/shared/UI/GlobalModal/lib/GlobalModalProvider';
 
-export default App;
+export const App = () => {
+  return (
+    <GlobalModalProvider>
+      <div className={styles.pageWrapper}>
+        <ProductsGrid />
+      </div>
+    </GlobalModalProvider>
+  );
+};
