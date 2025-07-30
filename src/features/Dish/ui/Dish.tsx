@@ -1,6 +1,6 @@
 import { Button } from '@/shared/UI/Button';
 import styles from './Dish.module.scss';
-import { useGlobalModal } from '@/shared/UI/GlobalModal';
+import { useModal } from '@/shared/UI/Modal';
 
 type TProps = {
   id: number;
@@ -11,7 +11,7 @@ type TProps = {
 };
 
 export const Dish = ({ name, price, imageUrl }: TProps) => {
-  const { openModal } = useGlobalModal();
+  const { openModal } = useModal();
 
   const handleClick = () => {
     openModal({

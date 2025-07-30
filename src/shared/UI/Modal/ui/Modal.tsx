@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import { X } from 'react-bootstrap-icons';
 import { type ModalOptions } from '../model/types';
-import styles from './GlobalModal.module.scss';
+import styles from './Modal.module.scss';
 import { IconButton } from '../../IconButton';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   onClose: () => void;
 }
 
-export const GlobalModal = ({ modal, onClose }: Props) => {
+export const Modal = ({ modal, onClose }: Props) => {
   if (!modal) {
     return null;
   }

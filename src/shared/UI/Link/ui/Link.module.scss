@@ -1,0 +1,33 @@
+.appLink {
+  text-decoration: none;
+  font-weight: 500;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &.primary {
+    color: #2563eb;
+
+    &:hover {
+      color: #1d4ed8;
+    }
+  }
+
+  &.secondary {
+    color: #4b5563;
+
+    &:hover {
+      color: #374151;
+    }
+  }
+}

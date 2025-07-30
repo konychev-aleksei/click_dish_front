@@ -1,0 +1,53 @@
+@use '/src/shared/styles/variables.scss' as *;
+
+.text {
+  margin: 0;
+  line-height: 1.5;
+}
+
+// Размеры текста
+.s {
+  font-size: 12px;
+}
+
+.m {
+  font-size: 14px;
+}
+
+.l {
+  font-size: 18px;
+}
+
+// Цвета
+.primary {
+  // color: $text-primary;
+  color: black;
+}
+
+.secondary {
+  // color: $text-secondary;
+  color: black;
+}
+
+.error {
+  // color: $color-error;
+  color: black;
+}
+
+.success {
+  // color: $color-success;
+  color: black;
+}
+
+// Насыщенность
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}

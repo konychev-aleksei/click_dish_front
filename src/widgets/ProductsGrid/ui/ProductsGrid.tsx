@@ -1,4 +1,5 @@
 import { Dish } from '@/features/Dish';
+import { Text } from '@/shared/UI';
 import styles from './Products.module.scss';
 
 const obj = {
@@ -9,14 +10,16 @@ const obj = {
   imageUrl: 'https://vseopecheni.ru/images/new/hinkali.jpg',
 };
 
-export const ProductsGrid = () => {
+export const Category = () => {
   return (
-    <>
-      <h2>Хинкали</h2>
+    <li>
+      <Text size="l" weight="bold">
+        Вброс
+      </Text>
       <div className={styles.productsGrid}>
         <Dish {...obj} />
         <Dish {...obj} />
       </div>
-    </>
+    </li>
   );
 };
