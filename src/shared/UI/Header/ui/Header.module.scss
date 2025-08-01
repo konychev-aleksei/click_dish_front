@@ -1,2 +1,7 @@
+@use '/src/shared/styles/variables.scss' as *;
+
 .header {
+  padding: 20px 0;
+  border-bottom: 1px solid $button-secondary;
+  letter-spacing: 2px;
 }

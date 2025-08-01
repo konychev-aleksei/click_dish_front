@@ -1,43 +1,46 @@
 import { Button } from '@/shared/UI/Button';
 import styles from './Dish.module.scss';
 import { useModal } from '@/shared/UI/Modal';
+import { Text } from '@/shared/UI';
+import { DishDetails } from '@/features/DishDetails';
 
 type TProps = {
   id: number;
-  name: string;
+  title: string;
   price: number; // пока в рублях
   description: string;
   imageUrl: string;
 };
 
-export const Dish = ({ name, price, imageUrl }: TProps) => {
+export const Dish = (dish: TProps) => {
+  const { title, price, imageUrl } = dish;
+
   const { openModal } = useModal();
 
   const handleClick = () => {
     openModal({
-      title: 'Подтвердите удаление',
-      content: <p>Вы точно хотите удалить задачу?</p>,
-      footer: (
-        <div className="flex justify-end gap-2">
-          <button className="btn" onClick={() => alert('Удалено')}>
-            Удалить
-          </button>
-        </div>
-      ),
+      title,
+      content: <DishDetails {...dish} />,
     });
   };
 
   return (
-    <label className={styles.dish}>
+    <article onClick={handleClick} className={styles.dish}>
       <div className={styles.dish__imageWrapper}>
         <img
           src={imageUrl}
-          alt={name}
+          alt={title}
           loading="lazy"
           className={styles.dish__image}
         />
       </div>
-      <Button onClick={handleClick}>{price} ₽ | Подробнее</Button>
-    </label>
+      <Text className={styles.dish__description}>{title}</Text>
+      <Button
+        onClick={(e) => e.stopPropagation()}
+        className={styles.dish__addToCardButton}
+      >
+        {price} ₽ | В корзину
+      </Button>
+    </article>
   );
 };

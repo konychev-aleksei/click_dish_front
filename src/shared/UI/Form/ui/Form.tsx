@@ -3,13 +3,19 @@ import {
   FormProvider,
   type UseFormReturn,
   type FieldValues,
+  type SubmitHandler,
 } from 'react-hook-form';
+import cn from 'classnames';
+import styles from './Form.module.scss';
 
-type FormProps<T extends FieldValues> = {
+type FormProps<T extends FieldValues> = Omit<
+  FormHTMLAttributes<HTMLFormElement>,
+  'onSubmit'
+> & {
   form: UseFormReturn<T>;
-  onSubmit: (data: T) => void;
+  onSubmit: SubmitHandler<T>;
   children: ReactNode;
-} & FormHTMLAttributes<HTMLFormElement>;
+};
 
 export const Form = <T extends FieldValues>({
   form,
@@ -22,7 +28,7 @@ export const Form = <T extends FieldValues>({
     <FormProvider {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={className}
+        className={cn(styles.form, className)}
         noValidate
         {...rest}
       >

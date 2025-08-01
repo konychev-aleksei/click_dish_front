@@ -1,3 +1,36 @@
+@use '/src/shared/styles/variables.scss' as *;
+
 .categories {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: calc($z-index-base + 1);
+
+  padding: 15px 0;
+
   display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 30px;
+
+  &__list {
+    flex: 1;
+    display: flex;
+    gap: 60px;
+    overflow-y: scroll;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      background: transparent;
+    }
+  }
+
+  &__item {
+    &_selected {
+      font-weight: 600;
+      text-decoration: underline;
+    }
+  }
 }

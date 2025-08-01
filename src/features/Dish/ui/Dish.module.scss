@@ -1,3 +1,5 @@
+@use '/src/shared/styles/variables.scss' as *;
+
 .dish {
   display: flex;
   flex-direction: column;
@@ -5,6 +7,16 @@
   gap: 10px;
 
   cursor: pointer;
+
+  border: 1px solid #ccc;
+
+  height: 480px;
+
+  justify-content: space-between;
+
+  &__description {
+    text-align: center;
+  }
 
   &__imageWrapper {
     width: 100%;

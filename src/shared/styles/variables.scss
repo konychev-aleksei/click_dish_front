@@ -1,3 +1,10 @@
-$button-primary: #232332; 
+$button-primary: #232332;
 $button-secondary: #9a9a9a;
 $error-text: #e53935;
+
+$z-index-base: 1;
+$z-index-dropdown: 10;
+$z-index-tooltip: 20;
+$z-index-modal: 100;
+$z-index-overlay: 110;
+$z-index-toast: 200;

@@ -1,4 +1,4 @@
-.appLink {
+.link {
   text-decoration: none;
   font-weight: 500;
   transition:
@@ -30,4 +30,17 @@
       color: #374151;
     }
   }
+}
+
+// Размеры текста
+.s {
+  font-size: 12px;
+}
+
+.m {
+  font-size: 16px;
+}
+
+.l {
+  font-size: 24px;
 }

@@ -1,7 +1,7 @@
 @use '/src/shared/styles/variables.scss' as *;
 
 .footer {
-  border-top: 1px solid $button-primary;
+  border-top: 1px solid $button-secondary;
 
   margin: 24px 0;
   padding: 24px 0;
@@ -26,15 +26,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-
-    a {
-      color: black;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 
   .copy {

@@ -1,0 +1,17 @@
+.dishDetails {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  &__image {
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    flex: 1;
+
+    height: 400px;
+  }
+
+  &__description {
+    flex: 1;
+  }
+}
