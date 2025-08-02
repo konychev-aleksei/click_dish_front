@@ -2,7 +2,7 @@ import { ForgotPasswordForm } from '@/features/ForgotPassword';
 import { PageWrapper, Text } from '@/shared/UI';
 import { SingleFormLayout } from '@/shared/UI/SingleFormLayout';
 
-export const ForgotPasswordPage = () => {
+const ForgotPasswordPage = () => {
   return (
     <PageWrapper>
       <SingleFormLayout>
@@ -10,11 +10,12 @@ export const ForgotPasswordPage = () => {
           Восстановление пароля
         </Text>
         <Text>
-          Укажите Ваш email, Вы получите на e-mail письмо с дальнейшими
-          инструкциями.
+          Укажите Ваш email, Вы получите письмо с дальнейшими инструкциями.
         </Text>
         <ForgotPasswordForm />
       </SingleFormLayout>
     </PageWrapper>
   );
 };
+
+export default ForgotPasswordPage;

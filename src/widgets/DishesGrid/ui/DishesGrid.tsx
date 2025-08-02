@@ -1,6 +1,7 @@
 import { Dish } from '@/features/Dish';
-import { Text } from '@/shared/UI';
+import { Button, Text } from '@/shared/UI';
 import styles from './DishesGrid.module.scss';
+import { Accordion } from '@/shared/UI/Accordion';
 
 const obj = {
   id: 1,
@@ -14,6 +15,21 @@ type TProps = { id: number; title: string; dishes: any[] };
 
 export const DishesGrid = ({ id, title, dishes }: TProps) => {
   return (
+    <Accordion id={`category${id}`} title={title}>
+      <div className={styles.dishesGrid}>
+        {dishes.map((dish) => (
+          <Dish key={dish.id} {...dish} />
+        ))}
+      </div>
+      <div className={styles.controls}>
+        <Button>Добавить блюдо</Button>
+        <Button variant="secondary">Удалить категорию</Button>
+      </div>
+    </Accordion>
+  );
+};
+
+/*
     <li>
       <Text
         id={`category${id}`}
@@ -28,6 +44,9 @@ export const DishesGrid = ({ id, title, dishes }: TProps) => {
           <Dish key={dish.id} {...dish} />
         ))}
       </div>
+      <div className={styles.controls}>
+        <Button>Добавить блюдо</Button>
+        <Button variant="secondary">Удалить категорию</Button>
+      </div>
     </li>
-  );
-};
+*/

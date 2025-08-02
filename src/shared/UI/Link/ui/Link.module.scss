@@ -1,6 +1,9 @@
+@use '/src/shared/styles/variables.scss' as *;
+
 .link {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
+  color: $button-primary;
   transition:
     color 0.2s ease,
     opacity 0.2s ease;
@@ -13,22 +16,6 @@
     pointer-events: none;
     opacity: 0.6;
     cursor: not-allowed;
-  }
-
-  &.primary {
-    color: #2563eb;
-
-    &:hover {
-      color: #1d4ed8;
-    }
-  }
-
-  &.secondary {
-    color: #4b5563;
-
-    &:hover {
-      color: #374151;
-    }
   }
 }
 

@@ -3,5 +3,3 @@ export const defaultValues = {
   password: '',
   confirmPassword: '',
 };
-
-export type TFieldValues = typeof defaultValues;

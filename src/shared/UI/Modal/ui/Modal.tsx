@@ -23,7 +23,7 @@ export const Modal = ({ modal, onClose }: Props) => {
             <X />
           </IconButton>
         </div>
-        <div className={styles.body}>{modal.content}</div>
+        {modal.content}
       </div>
     </div>,
     document.getElementById('modal-root')!

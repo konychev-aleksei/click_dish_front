@@ -1,22 +1,30 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import '@/shared/styles/global.scss';
 
 import { ModalProvider } from '@/shared/UI';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { MainPage } from '@/pages/MainPage';
-import { LoginPage } from '@/pages/LoginPage';
-import { RegistrationPage } from '@/pages/RegistrationPage';
-import { ForgotPasswordPage } from '@/pages/ForgotPasswordPage';
+
+const RestaurantPage = lazy(() => import('@/pages/RestaurantPage'));
+const LoginPage = lazy(() => import('@/pages/LoginPage'));
+const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
+const ForgotPasswordPage = lazy(() => import('@/pages/ForgotPasswordPage'));
+const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 
 export const App = () => {
   return (
     <BrowserRouter>
       <ModalProvider>
-        <Routes>
-          <Route path="main" element={<MainPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="registration" element={<RegistrationPage />} />
-          <Route path="forgot-password" element={<ForgotPasswordPage />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/restaurant/:id" element={<RestaurantPage />} />
+            <Route path="/user">
+              <Route path="login" element={<LoginPage />} />
+              <Route path="registration" element={<RegistrationPage />} />
+              <Route path="forgot-password" element={<ForgotPasswordPage />} />
+              <Route path="profile" element={<ProfilePage />} />
+            </Route>
+          </Routes>
+        </Suspense>
       </ModalProvider>
     </BrowserRouter>
   );

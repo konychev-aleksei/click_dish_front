@@ -1,8 +1,8 @@
-import { RegistrationForm } from '@/features/RegistrationForm';
+import { RegistrationForm } from '@/features/Registration';
 import { Link, PageWrapper, Text } from '@/shared/UI';
 import { SingleFormLayout } from '@/shared/UI/SingleFormLayout';
 
-export const RegistrationPage = () => {
+const RegistrationPage = () => {
   return (
     <PageWrapper>
       <SingleFormLayout>
@@ -17,3 +17,5 @@ export const RegistrationPage = () => {
     </PageWrapper>
   );
 };
+
+export default RegistrationPage;

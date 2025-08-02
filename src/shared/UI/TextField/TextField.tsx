@@ -1,19 +1,40 @@
-import { forwardRef, type ChangeEvent, type InputHTMLAttributes } from 'react';
+import {
+  forwardRef,
+  type ChangeEvent,
+  type InputHTMLAttributes,
+  type TextareaHTMLAttributes,
+} from 'react';
 import cn from 'classnames';
 import styles from './TextField.module.scss';
 
-export type TextFieldProps = Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange'
-> & {
+type BaseProps = {
   label?: string;
-  value?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   error?: string;
   className?: string;
+  multiline?: boolean;
+  minRows?: number;
+  maxRows?: number;
 };
 
-export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+type InputProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'value' | 'onChange'
+>;
+type TextareaProps = Omit<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  'value' | 'onChange' | 'rows'
+>;
+
+export type TextFieldProps = BaseProps &
+  (InputProps | TextareaProps) & {
+    value?: string;
+    onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  };
+
+export const TextField = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  TextFieldProps
+>(
   (
     {
       label,
@@ -23,27 +44,42 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       disabled = false,
       error,
       className,
-      type = 'text',
+      multiline = false,
+      minRows = 3,
+      maxRows,
       ...rest
     },
     ref
   ) => {
+    const commonProps = {
+      ref,
+      value,
+      onChange,
+      placeholder,
+      disabled,
+      className: cn(styles.input, {
+        [styles.disabled]: disabled,
+        [styles.error]: !!error,
+      }),
+      ...rest,
+    };
+
     return (
       <div className={cn(styles.textfield, className)}>
         {label && <label className={styles.label}>{label}</label>}
-        <input
-          ref={ref}
-          type={type}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          disabled={disabled}
-          className={cn(styles.input, {
-            [styles.disabled]: disabled,
-            [styles.error]: !!error,
-          })}
-          {...rest}
-        />
+
+        {multiline ? (
+          <textarea
+            {...(commonProps as TextareaProps)}
+            rows={minRows}
+            style={{
+              resize: 'none',
+              ...(maxRows && { maxHeight: `${maxRows * 1.5}em` }), // или px, зависит от дизайна
+            }}
+          />
+        ) : (
+          <input {...(commonProps as InputProps)} />
+        )}
 
         {error && <div className={styles.errorText}>{error}</div>}
       </div>

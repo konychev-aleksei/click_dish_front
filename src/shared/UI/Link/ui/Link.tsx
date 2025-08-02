@@ -7,13 +7,10 @@ import {
 import cn from 'classnames';
 import styles from './Link.module.scss';
 
-export type AppLinkVariant = 'primary' | 'secondary';
-
 type LinkProps = {
   className?: string;
   onClick?: (e: MouseEvent<HTMLAnchorElement>) => void;
   size?: 's' | 'm' | 'l';
-  variant?: AppLinkVariant;
   underline?: boolean;
   disabled?: boolean;
 } & RRDLinkProps;
@@ -24,7 +21,6 @@ export const Link = ({
   className,
   children,
   size = 'm',
-  variant = 'primary',
   underline = false,
   disabled = false,
   ...rest
@@ -57,7 +53,6 @@ export const Link = ({
       onClick={handleClick}
       className={cn(
         styles.link,
-        styles[variant],
         styles[size],
         {
           [styles.underline]: underline,

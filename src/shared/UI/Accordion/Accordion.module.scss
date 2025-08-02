@@ -1,8 +1,7 @@
 @use '/src/shared/styles/variables.scss' as *;
 
 .accordion {
-  border: 1px solid $button-secondary;
-  border-radius: 8px;
+  border: 1px solid #c1c1c1;
   margin: 1rem 0;
   padding: 0.5rem;
 }
@@ -10,9 +9,17 @@
 .summary {
   font-weight: bold;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 10px 15px;
   list-style: none;
   outline: none;
+
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &::-webkit-details-marker {
     display: none;

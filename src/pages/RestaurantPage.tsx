@@ -1,3 +1,4 @@
+import { AddCategoryButton } from '@/features/AddCategory';
 import { Categories } from '@/features/Categories';
 import { PageWrapper, Spinner, ErrorBanner, Empty } from '@/shared/UI';
 // import { useGetBlocksQuery } from '@/entities/api';
@@ -79,7 +80,7 @@ const categories: Record<number, string> = {
 
 const error = null;
 
-export const MainPage = () => {
+const RestaurantPage = () => {
   // const { data: blocks = [], isLoading, error } = useGetBlocksQuery();
 
   const blocksFormatted = Object.entries(
@@ -100,9 +101,12 @@ export const MainPage = () => {
   return (
     <PageWrapper isLoading={isLoading} fallbackUI={<Spinner />}>
       <Categories />
+      <AddCategoryButton />
       {blocksFormatted.length > 0 ? (
         blocksFormatted.map(([id, dishes]) => (
-          <DishesGrid key={id} id={id} title={categories[id]} dishes={dishes} />
+          <li key={id}>
+            <DishesGrid id={id} title={categories[id]} dishes={dishes} />
+          </li>
         ))
       ) : (
         <Empty message="Ничего не найдено" />
@@ -110,3 +114,5 @@ export const MainPage = () => {
     </PageWrapper>
   );
 };
+
+export default RestaurantPage;

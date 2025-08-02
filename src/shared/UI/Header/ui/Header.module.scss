@@ -4,4 +4,13 @@
   padding: 20px 0;
   border-bottom: 1px solid $button-secondary;
   letter-spacing: 2px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  &__logo {
+    flex: 1;
+  }
 }

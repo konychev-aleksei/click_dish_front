@@ -20,7 +20,7 @@ export const Dish = (dish: TProps) => {
   const handleClick = () => {
     openModal({
       title,
-      content: <DishDetails {...dish} />,
+      content: <DishDetails {...dish} canEdit />,
     });
   };
 
@@ -35,10 +35,7 @@ export const Dish = (dish: TProps) => {
         />
       </div>
       <Text className={styles.dish__description}>{title}</Text>
-      <Button
-        onClick={(e) => e.stopPropagation()}
-        className={styles.dish__addToCardButton}
-      >
+      <Button onClick={(e) => e.stopPropagation()}>
         {price} ₽ | В корзину
       </Button>
     </article>

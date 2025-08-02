@@ -1,8 +1,8 @@
-import { LoginForm } from '@/features/LoginForm';
+import { LoginForm } from '@/features/Login';
 import { Link, PageWrapper, Text } from '@/shared/UI';
 import { SingleFormLayout } from '@/shared/UI/SingleFormLayout';
 
-export const LoginPage = () => {
+const LoginPage = () => {
   return (
     <PageWrapper>
       <SingleFormLayout>
@@ -15,3 +15,5 @@ export const LoginPage = () => {
     </PageWrapper>
   );
 };
+
+export default LoginPage;

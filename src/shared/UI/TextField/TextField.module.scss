@@ -38,3 +38,15 @@
   font-size: 13px;
   color: #e53935;
 }
+
+.input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  resize: none;
+  line-height: 1.5;
+}
+
+textarea.input {
+  resize: none;
+  overflow-y: auto;
+}
