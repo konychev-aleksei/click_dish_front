@@ -17,7 +17,7 @@ type TextTag =
 
 type TextProps = ParamHTMLAttributes<HTMLParagraphElement> & {
   tag?: TextTag;
-  size?: 's' | 'm' | 'l';
+  size?: 's' | 'm' | 'l' | 'xl';
   color?: 'primary' | 'secondary' | 'error' | 'success';
   weight?: 'regular' | 'medium' | 'bold';
   children: ReactNode;

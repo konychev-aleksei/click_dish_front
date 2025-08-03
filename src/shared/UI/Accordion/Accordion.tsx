@@ -12,7 +12,7 @@ export type AccordionProps = DetailsHTMLAttributes<HTMLDetailsElement> & {
 export const Accordion = ({
   title,
   children,
-  open = false,
+  open = true,
   ...rest
 }: AccordionProps) => {
   const [isOpen, setIsOpen] = useState(open);

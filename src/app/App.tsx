@@ -3,6 +3,7 @@ import { Suspense, lazy } from 'react';
 import '@/shared/styles/global.scss';
 
 import { ModalProvider } from '@/shared/UI';
+import { withReactQuery } from './providers/ReactQuery';
 
 const RestaurantPage = lazy(() => import('@/pages/RestaurantPage'));
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
@@ -10,7 +11,7 @@ const RegistrationPage = lazy(() => import('@/pages/RegistrationPage'));
 const ForgotPasswordPage = lazy(() => import('@/pages/ForgotPasswordPage'));
 const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
 
-export const App = () => {
+export const App = withReactQuery(() => {
   return (
     <BrowserRouter>
       <ModalProvider>
@@ -28,4 +29,4 @@ export const App = () => {
       </ModalProvider>
     </BrowserRouter>
   );
-};
+});

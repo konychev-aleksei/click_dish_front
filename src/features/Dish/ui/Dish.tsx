@@ -20,7 +20,7 @@ export const Dish = (dish: TProps) => {
   const handleClick = () => {
     openModal({
       title,
-      content: <DishDetails {...dish} canEdit />,
+      content: <DishDetails {...dish} />,
     });
   };
 
