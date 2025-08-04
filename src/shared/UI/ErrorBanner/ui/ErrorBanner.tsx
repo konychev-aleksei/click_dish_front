@@ -1,7 +1,10 @@
+import { ERROR_LOADING_CONTENT } from '../model/constants';
+import styles from './ErrorBanner.module.scss';
+
 type TProps = {
-  error: string;
+  error?: string;
 };
 
-export const ErrorBanner = ({ error }: TProps) => {
-  return <div>{error}</div>;
+export const ErrorBanner = ({ error = ERROR_LOADING_CONTENT }: TProps) => {
+  return <div className={styles.errorBanner}>{error}</div>;
 };

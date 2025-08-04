@@ -21,20 +21,20 @@ export const useRestaurantsQuery = () =>
     },
   });
 
-export const useRestaurantQuery = (slug: number) =>
+export const useRestaurantQuery = (slug: string) =>
   useQuery<Restaurant>({
     queryKey: ['restaurant', slug],
     queryFn: async () => {
-      const res = await axios.get(`/api/restaurants/${slug}`);
+      const res = await apiClient.get(`/api/restaurants/${slug}`);
       return restaurantSchema.validateSync(res.data, { strict: true });
     },
   });
 
-export const useCategoriesQuery = (restaurantSlug: number) =>
+export const useCategoriesQuery = (restaurantSlug: string) =>
   useQuery<Category[]>({
     queryKey: ['categories', restaurantSlug],
     queryFn: async () => {
-      const res = await axios.get(
+      const res = await apiClient.get(
         `/api/restaurants/${restaurantSlug}/categories`
       );
       return res.data.map((c: unknown) =>
@@ -43,22 +43,24 @@ export const useCategoriesQuery = (restaurantSlug: number) =>
     },
   });
 
-export const useDishesQuery = (restaurantSlug: number) =>
+export const useDishesQuery = (restaurantSlug: string) =>
   useQuery<Dish[]>({
     queryKey: ['dishes', restaurantSlug],
     queryFn: async () => {
-      const res = await axios.get(`/api/restaurants/${restaurantSlug}/dishes`);
+      const res = await apiClient.get(
+        `/api/restaurants/${restaurantSlug}/dishes`
+      );
       return res.data.map((d: unknown) =>
         dishSchema.validateSync(d, { strict: true })
       );
     },
   });
 
-export const useDishQuery = (restaurantSlug: number, id: number) =>
+export const useDishQuery = (restaurantSlug: string, id: number) =>
   useQuery<Dish>({
     queryKey: ['dishes', restaurantSlug, id],
     queryFn: async () => {
-      const res = await axios.get(
+      const res = await apiClient.get(
         `/api/restaurants/${restaurantSlug}/dishes/${id}`
       );
       return dishSchema.validateSync(res.data, { strict: true });
