@@ -20,7 +20,7 @@ export const useRestaurantList = () => {
       ...r,
       name: r.name.trim(),
     }));
-    console.log('Сохраняем список ресторанов:', cleaned);
+
     // тут логика отправки на сервер
   };
 

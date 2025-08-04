@@ -1,13 +1,10 @@
 import * as yup from 'yup';
 
-export const loginSchema = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string().required(),
-});
-
-export const registerSchema = yup.object({
-  email: yup.string().email().required(),
-  password: yup.string().required(),
+export const loginAndRegisterSchema = yup.object({
+  user: yup.object({
+    email: yup.string().email().required(),
+    password: yup.string().required(),
+  }),
 });
 
 export const updateUserSchema = yup.object({
@@ -36,8 +33,9 @@ export const userSchema = yup.object({
 });
 
 export type User = yup.InferType<typeof userSchema>;
-export type LoginRequest = yup.InferType<typeof loginSchema>;
-export type RegisterRequest = yup.InferType<typeof registerSchema>;
+export type LoginAndRegisterRequest = yup.InferType<
+  typeof loginAndRegisterSchema
+>;
 export type UpdateUserRequest = yup.InferType<typeof updateUserSchema>;
 export type ResetPasswordRequest = yup.InferType<
   typeof resetPasswordRequestSchema

@@ -20,7 +20,7 @@ export const LoginFormView = ({ form, onSubmit }: TProps) => {
         error={errors.password?.message}
         {...register('password')}
       />
-      <Button type="submit" disabled={isSubmitting}>
+      <Button type="submit" disabled={isSubmitting} loading={isSubmitting}>
         Войти
       </Button>
     </Form>

@@ -11,7 +11,7 @@ const RegistrationPage = () => {
         </Text>
         <RegistrationForm />
         <Text>
-          Уже есть аккаунт? <Link to={`/user/forgot-password`}>Войти</Link>
+          Уже есть аккаунт? <Link to={`/user/login`}>Войти</Link>
         </Text>
       </SingleFormLayout>
     </PageWrapper>

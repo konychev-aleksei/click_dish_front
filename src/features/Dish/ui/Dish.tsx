@@ -3,24 +3,17 @@ import styles from './Dish.module.scss';
 import { useModal } from '@/shared/UI/Modal';
 import { Text } from '@/shared/UI';
 import { DishDetails } from '@/features/DishDetails';
+import type { Dish as TDish } from '@/entities/restaurant/api/contracts';
 
-type TProps = {
-  id: number;
-  title: string;
-  price: number; // пока в рублях
-  description: string;
-  imageUrl: string;
-};
-
-export const Dish = (dish: TProps) => {
-  const { title, price, imageUrl } = dish;
+export const Dish = (dish: TDish) => {
+  const { title, price } = dish;
 
   const { openModal } = useModal();
 
   const handleClick = () => {
     openModal({
       title,
-      content: <DishDetails {...dish} />,
+      content: <DishDetails restaurantSlug={1} {...dish} />,
     });
   };
 
@@ -28,7 +21,7 @@ export const Dish = (dish: TProps) => {
     <article onClick={handleClick} className={styles.dish}>
       <div className={styles.dish__imageWrapper}>
         <img
-          src={imageUrl}
+          src={''}
           alt={title}
           loading="lazy"
           className={styles.dish__image}

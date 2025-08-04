@@ -6,9 +6,11 @@ import styles from './Header.module.scss';
 export const Header = () => {
   return (
     <header className={styles.header}>
-      <Text size="l" weight="bold" className={styles.header__logo}>
-        ClickDish
-      </Text>
+      <Link to="/" className={styles.header__logo}>
+        <Text size="l" weight="bold">
+          ClickDish
+        </Text>
+      </Link>
       <Link to="/user/login">
         <Button>Войти</Button>
       </Link>

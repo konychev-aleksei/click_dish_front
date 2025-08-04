@@ -11,6 +11,9 @@ const LoginPage = () => {
         </Text>
         <LoginForm />
         <Link to={`/user/forgot-password`}>Забыли пароль?</Link>
+        <Text>
+          Нет аккаунта? <Link to={`/user/registration`}>Регистрация</Link>
+        </Text>
       </SingleFormLayout>
     </PageWrapper>
   );

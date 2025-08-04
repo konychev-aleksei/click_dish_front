@@ -1,6 +1,6 @@
 export { Header } from './Header';
 export { Footer } from './Footer';
-export { ModalProvider, Modal } from './Modal';
+export { ModalProvider, Modal, ModalPreloader } from './Modal';
 export { TextField } from './TextField';
 export { Form } from './Form';
 export { Link } from './Link';
@@ -12,3 +12,4 @@ export { ErrorBanner } from './ErrorBanner';
 export { Empty } from './Empty';
 export { List } from './List';
 export { Stack } from './Stack';
+export { Accordion } from './Accordion';

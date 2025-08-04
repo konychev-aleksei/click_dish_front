@@ -1,40 +1,30 @@
+import { ModalPreloader, ErrorBanner } from '@/shared/UI';
 import { DishDetailsView } from './DishDetailsView';
 import { DishDetailsEdit } from './DishDetailsEdit';
-import type { TDishDetailsProps } from '../model/types';
-import { ModalPreloader } from '@/shared/UI/Modal';
-import { ErrorBanner } from '@/shared/UI';
+import { useDishQuery } from '@/entities/restaurant/api/queries';
 
-type TProps = TDishDetailsProps & {
+type TProps = {
+  id: number;
+  restaurantSlug: number;
   canEdit?: boolean;
 };
 
-const isLoading = false;
-
-const error = null;
-
-const dishData = {
-  id: 1,
-  title:
-    'Мегрельское мжаве (ассорти из солений) Мегрельское мжаве (ассорти из солений)',
-  price: 500,
-  description:
-    'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi iure sunt quis saepe molestiae illo qui et debitis, hic ipsa!',
-  imageUrl: 'https://vseopecheni.ru/images/new/hinkali.jpg',
-  category_id: 1,
-};
-
-export const DishDetails = ({ id, canEdit = false }: TProps) => {
-  // const { dishData, isLoading, error } = useDishDetails(id);
+export const DishDetails = ({
+  id,
+  restaurantSlug,
+  canEdit = false,
+}: TProps) => {
+  const { data: dish, isLoading, error } = useDishQuery(restaurantSlug, id);
 
   if (isLoading) {
     return <ModalPreloader />;
   }
 
   if (error) {
-    return <ErrorBanner error={error} />;
+    return <ErrorBanner error={error.message} />;
   }
 
   const Details = canEdit ? DishDetailsEdit : DishDetailsView;
 
-  return <Details {...dishData} />;
+  return <Details {...dish!} />;
 };
