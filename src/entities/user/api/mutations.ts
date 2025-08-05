@@ -12,7 +12,7 @@ import {
 export const useLoginMutation = () =>
   useMutation({
     mutationFn: async (data: LoginAndRegisterRequest) => {
-      const res = await apiClient.post('/api/users/login', data);
+      const res = await apiClient.post('/users/login', data);
       return userSchema.validateSync(res.data);
     },
   });
@@ -20,7 +20,7 @@ export const useLoginMutation = () =>
 export const useRegisterMutation = () =>
   useMutation({
     mutationFn: async (data: LoginAndRegisterRequest) => {
-      const res = await apiClient.post('/api/users', data);
+      const res = await apiClient.post('/users', data);
       return userSchema.validateSync(res.data.user);
     },
   });
@@ -28,7 +28,7 @@ export const useRegisterMutation = () =>
 export const useUpdateUserMutation = () =>
   useMutation({
     mutationFn: async (data: UpdateUserRequest) => {
-      const res = await apiClient.patch('/api/users', data);
+      const res = await apiClient.patch('/users', data);
       return userSchema.validateSync(res.data);
     },
   });
@@ -36,19 +36,19 @@ export const useUpdateUserMutation = () =>
 export const useLogoutMutation = () =>
   useMutation({
     mutationFn: async () => {
-      await apiClient.delete('/api/users/logout');
+      await apiClient.delete('/users/logout');
     },
   });
 
 export const useDeleteUserMutation = () =>
   useMutation({
     mutationFn: async () => {
-      await apiClient.delete('/api/users');
+      await apiClient.delete('/users');
     },
   });
 
 export const confirmEmail = async (confirmationToken: string) => {
-  const res = await apiClient.get('/api/users/confirmation', {
+  const res = await apiClient.get('/users/confirmation', {
     params: { confirmation_token: confirmationToken },
   });
   return userSchema.validateSync(res.data);
@@ -57,21 +57,21 @@ export const confirmEmail = async (confirmationToken: string) => {
 export const useResendConfirmationMutation = () =>
   useMutation({
     mutationFn: async (data: ResendConfirmationRequest) => {
-      await apiClient.post('/api/users/confirmation', data);
+      await apiClient.post('/users/confirmation', data);
     },
   });
 
 export const useRequestPasswordResetMutation = () =>
   useMutation({
     mutationFn: async (data: ResetPasswordRequest) => {
-      await apiClient.post('/api/users/reset_password', data);
+      await apiClient.post('/users/reset_password', data);
     },
   });
 
 export const useResetPasswordMutation = () =>
   useMutation({
     mutationFn: async (data: DoResetPasswordRequest) => {
-      const res = await apiClient.patch('/api/users/reset_password', data);
+      const res = await apiClient.patch('/users/reset_password', data);
       return userSchema.validateSync(res.data);
     },
   });

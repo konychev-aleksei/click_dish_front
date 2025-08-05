@@ -5,7 +5,7 @@ import { useDishQuery } from '@/entities/restaurant/api/queries';
 
 type TProps = {
   id: number;
-  restaurantSlug: number;
+  restaurantSlug: string;
   canEdit?: boolean;
 };
 

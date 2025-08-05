@@ -6,47 +6,82 @@
   gap: 4px;
 }
 
+// Label
 .label {
   font-size: 14px;
   color: $button-secondary;
   font-weight: 400;
 }
 
+// Обертка для input и глазика
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+// Основной input
 .input {
+  width: 100%;
   padding: 8px 12px;
   font-size: 16px;
+  line-height: 1.5;
   border: 1px solid $button-secondary;
-  transition: border 0.1s;
+  transition: border 0.1s ease-in-out;
 
   &:focus {
     border-color: $button-primary;
     outline: none;
   }
+
+  &.disabled {
+    background-color: #f9f9f9;
+    color: $button-secondary;
+    cursor: not-allowed;
+  }
+
+  &.error {
+    border-color: #e53935;
+  }
 }
 
-.disabled {
-  background-color: #f9f9f9;
-  color: $button-secondary;
-  cursor: not-allowed;
-}
-
-.error {
-  border-color: #e53935;
-}
-
-.errorText {
-  font-size: 13px;
-  color: #e53935;
-}
-
-.input {
-  padding: 0.5rem;
-  font-size: 1rem;
-  resize: none;
-  line-height: 1.5;
-}
-
+// Только для textarea
 textarea.input {
   resize: none;
   overflow-y: auto;
+}
+
+// Кнопка-глазик
+.eyeButton {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+// Иконка глазика
+.eyeIcon {
+  width: 20px;
+  height: 20px;
+  color: $button-secondary;
+}
+
+// Текст ошибки
+.errorText {
+  font-size: 13px;
+  color: #e53935;
+  margin-top: 2px;
 }

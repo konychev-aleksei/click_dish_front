@@ -1,9 +1,11 @@
 import {
   forwardRef,
+  useState,
   type ChangeEvent,
   type InputHTMLAttributes,
   type TextareaHTMLAttributes,
 } from 'react';
+import { Eye, EyeSlash } from 'react-bootstrap-icons';
 import cn from 'classnames';
 import styles from './TextField.module.scss';
 
@@ -47,10 +49,24 @@ export const TextField = forwardRef<
       multiline = false,
       minRows = 3,
       maxRows,
+      type,
       ...rest
     },
     ref
   ) => {
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const showPasswordToggle = type === 'password';
+
+    const togglePasswordVisibility = () => {
+      setIsPasswordVisible((prev) => !prev);
+    };
+
+    const inputType = showPasswordToggle
+      ? isPasswordVisible
+        ? 'text'
+        : 'password'
+      : type;
+
     const commonProps = {
       ref,
       value,
@@ -74,11 +90,27 @@ export const TextField = forwardRef<
             rows={minRows}
             style={{
               resize: 'none',
-              ...(maxRows && { maxHeight: `${maxRows * 1.5}em` }), // или px, зависит от дизайна
+              ...(maxRows && { maxHeight: `${maxRows * 1.5}em` }),
             }}
           />
         ) : (
-          <input {...(commonProps as InputProps)} />
+          <div className={styles.inputWrapper}>
+            <input {...(commonProps as InputProps)} type={inputType} />
+            {showPasswordToggle && (
+              <button
+                type="button"
+                className={styles.eyeButton}
+                onClick={togglePasswordVisibility}
+                tabIndex={-1}
+              >
+                {isPasswordVisible ? (
+                  <EyeSlash className={styles.eyeIcon} />
+                ) : (
+                  <Eye className={styles.eyeIcon} />
+                )}
+              </button>
+            )}
+          </div>
         )}
 
         {error && <div className={styles.errorText}>{error}</div>}

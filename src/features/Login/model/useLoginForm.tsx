@@ -18,7 +18,8 @@ export const useLoginForm = () => {
   });
 
   const onSubmit: SubmitHandler<TFieldValues> = (user) => {
-    login({ user }).then(() => {
+    login({ user }).then((result) => {
+      console.log(result);
       navigate('/user/profile');
     });
   };

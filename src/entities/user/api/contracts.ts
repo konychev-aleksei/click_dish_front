@@ -15,12 +15,16 @@ export const updateUserSchema = yup.object({
 });
 
 export const resetPasswordRequestSchema = yup.object({
-  email: yup.string().email().required(),
+  user: yup.object({
+    email: yup.string().email().required(),
+  }),
 });
 
 export const doResetPasswordSchema = yup.object({
-  reset_password_token: yup.string().required(),
-  password: yup.string().required(),
+  user: yup.object({
+    reset_password_token: yup.string().required(),
+    password: yup.string().required(),
+  }),
 });
 
 export const resendConfirmationSchema = yup.object({
